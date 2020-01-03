@@ -36,8 +36,8 @@
       });
 
       var map = new Map({
-          //basemap: "streets-navigation-vector",
-          basemap: "osm",
+          basemap: "streets-navigation-vector",
+          //basemap: "osm",
           layers: [layer1, layer2, layer3, layer4]
       });
 
