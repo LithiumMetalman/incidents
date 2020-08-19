@@ -1,7 +1,8 @@
   require([
       "esri/Map",
       "esri/views/MapView",
-      "esri/views/SceneView",
+	  "esri/layers/FeatureLayer",
+	  "esri/PopupTemplate",
       "esri/widgets/Expand",
       "esri/widgets/BasemapGallery",
       "esri/layers/KMLLayer",
@@ -11,14 +12,22 @@
   ], function(
       Map,
       MapView,
-      SceneView,
+	  FeatureLayer,
+	  PopupTemplate,
       Expand,
       BasemapGallery,
       KMLLayer,
       LayerList,
       Search
   ) {
-
+	  
+	  //Create Template for popupEnabled
+	  var template = new PopupTemplate({
+		  title:"Fire Name: {IncidentName}",
+          content: "{*}"  
+      });
+	 	  
+      //Load Layers
       var layer1 = new KMLLayer({
           url: "http://quickmap.dot.ca.gov/data/lcs.kml" // lane closures from California Dept of Transportation
       });
@@ -34,11 +43,21 @@
       var layer5 = new KMLLayer({
           url: "https://www.arb.ca.gov/smp/met/kml/calfire.kml" // CalFire
       });
+	  var layer6 =  new FeatureLayer({
+		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/0",
+		  popupEnabled: true,
+		  popupTemplate: template  
+	  })
+	  var layer7 =  new FeatureLayer({
+		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/1",
+		  popupEnabled: true,
+		  popupTemplate: template  
+	  })
 
       var map = new Map({
           basemap: "streets-navigation-vector",
           //basemap: "osm",
-          layers: [layer1, layer2, layer3, layer4]
+          layers: [layer1, layer2, layer3, layer4, layer6, layer7]
       });
 
 
