@@ -49,16 +49,42 @@
 		  popupTemplate: template  
 	  })
 	  var layer7 =  new FeatureLayer({
-		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/1",
+		  url: "https://services3.arcgis.com/T4QMspbfLg3qTGWY/ArcGIS/rest/services/Public_Wildfire_Perimeters_View/FeatureServer/0",
+		  //url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/1",
 		  popupEnabled: true,
 		  popupTemplate: template  
 	  })
+	  
+	  var layer8 =  new FeatureLayer({
+		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/ArcGIS/rest/services/MODIS_Thermal_v1/FeatureServer/0",
+		  popupEnabled: true,
+		  popupTemplate: template  
+	  })
+	  
+	  var layer9 =  new FeatureLayer({
+		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/ArcGIS/rest/services/Satellite_VIIRS_Thermal_Hotspots_and_Fire_Activity/FeatureServer/0",
+		  popupEnabled: true,
+		  popupTemplate: template  
+	  })
+	  
+	  
 
       var map = new Map({
           basemap: "streets-navigation-vector",
           //basemap: "osm",
-          layers: [layer1, layer2, layer3, layer4, layer6, layer7]
+          layers: [layer1, layer2, layer3, layer4, layer6, layer7, layer8, layer9]
       });
+	  
+	  //reorder layers
+	  map.layers.reorder(layer1,8);
+	  map.layers.reorder(layer2,7);
+	  map.layers.reorder(layer3,6);
+	  map.layers.reorder(layer4,5);
+	  map.layers.reorder(layer5,4);
+	  map.layers.reorder(layer6,3);
+	  map.layers.reorder(layer7,0);
+	  map.layers.reorder(layer8,1);
+	  map.layers.reorder(layer9,2);
 
 
       var view = new MapView({
