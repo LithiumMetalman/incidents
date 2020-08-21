@@ -64,7 +64,8 @@
 	  var layer9 =  new FeatureLayer({
 		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/ArcGIS/rest/services/Satellite_VIIRS_Thermal_Hotspots_and_Fire_Activity/FeatureServer/0",
 		  popupEnabled: true,
-		  popupTemplate: template  
+		  popupTemplate: template,
+		  visible: false
 	  })
 	  
 	  
