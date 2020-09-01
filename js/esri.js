@@ -8,6 +8,7 @@
       "esri/layers/KMLLayer",
       "esri/widgets/LayerList",
       "esri/widgets/Search",
+	  "esri/widgets/Locate",
       "dojo/domReady!"
   ], function(
       Map,
@@ -18,7 +19,8 @@
       BasemapGallery,
       KMLLayer,
       LayerList,
-      Search
+      Search,
+	  Locate
   ) {
 	  
 	  //Create Template for popupEnabled
@@ -64,7 +66,8 @@
 	  var layer9 =  new FeatureLayer({
 		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/ArcGIS/rest/services/Satellite_VIIRS_Thermal_Hotspots_and_Fire_Activity/FeatureServer/0",
 		  popupEnabled: true,
-		  popupTemplate: template  
+		  popupTemplate: template,
+		  visible:false
 	  })
 	  
 	  
@@ -85,6 +88,9 @@
 	  map.layers.reorder(layer7,0);
 	  map.layers.reorder(layer8,1);
 	  map.layers.reorder(layer9,2);
+	  
+	  //Set layer visibility
+
 
 
       var view = new MapView({
@@ -157,5 +163,15 @@
       view.ui.add(srExpand, "top-right");
       view.ui.add(sgExpand, "top-right");
       view.ui.add(bgExpand, "top-right");
+	  
+	  //add locate button
+	  var locateBtn = new Locate({
+		  view: view
+	  });
+	  
+	  // Add the locate widget to the top left corner of the view
+        view.ui.add(locateBtn, {
+          position: "top-right"
+      });
 
   });
