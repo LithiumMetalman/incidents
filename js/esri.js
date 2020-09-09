@@ -46,13 +46,15 @@
           url: "https://www.arb.ca.gov/smp/met/kml/calfire.kml" // CalFire
       });
 	  var layer6 =  new FeatureLayer({
-		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/0",
+		  //url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/0",
+		  url: "https://services3.arcgis.com/T4QMspbfLg3qTGWY/ArcGIS/rest/services/Active_Fires/FeatureServer/0",
 		  popupEnabled: true,
 		  popupTemplate: template  
 	  })
 	  var layer7 =  new FeatureLayer({
-		  //url: "https://services3.arcgis.com/T4QMspbfLg3qTGWY/ArcGIS/rest/services/Public_Wildfire_Perimeters_View/FeatureServer/0",
-		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/1",
+		  url: "https://services3.arcgis.com/T4QMspbfLg3qTGWY/ArcGIS/rest/services/Archived_Wildfire_Perimeters2/FeatureServer/0",
+		  outFields: ["*"],
+		  //url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/1",
 		  popupEnabled: true,
 		  popupTemplate: template  
 	  })
@@ -99,6 +101,13 @@
           center: [-122.148669, 37.940553],
           zoom: 10
       });
+	  
+	  
+	  //filter perimeter fires
+	  var sqlExpressions = [
+		  "GDB_FROM_DATE > 1/1/2020",
+		  "GDB_TO_DATE < 12/30/2020"
+	];
 
       /*
         var view = new SceneView({
