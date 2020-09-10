@@ -46,8 +46,8 @@
           url: "https://www.arb.ca.gov/smp/met/kml/calfire.kml" // CalFire
       });
 	  var layer6 =  new FeatureLayer({
-		  //url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/0",
-		  url: "https://services3.arcgis.com/T4QMspbfLg3qTGWY/ArcGIS/rest/services/Active_Fires/FeatureServer/0",
+		  url: "https://services9.arcgis.com/RHVPKKiFTONKtxq3/arcgis/rest/services/USA_Wildfires_v1/FeatureServer/0",
+		  //url: "https://services3.arcgis.com/T4QMspbfLg3qTGWY/ArcGIS/rest/services/Active_Fires/FeatureServer/0",
 		  popupEnabled: true,
 		  popupTemplate: template  
 	  })
